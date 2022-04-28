@@ -2,21 +2,22 @@ package me.ibyte.sorting;
 
 import java.util.Arrays;
 
-public class quick {
+public class Quick {
 
 	public static void main(String[] args) {
-		Integer[] arr = { 2, 22, 11, 34, 111, 1, 453, 5, 3 };
-		QuickSort(arr, 0, arr.length - 1);
+		Double[] arr = { 2.1, 2.2, 11.11, 3.4, 111.1, 1.0, 45.3, 5.12, 3.3 };
+		quickSort(arr, 0, arr.length - 1);
 		System.out.println(Arrays.toString(arr));
 	}
 
-	public static <T extends Comparable<T>> void QuickSort(T[] arr, int startIndex, int endIndex) {
+	
+	public static <T extends Comparable<T>> void quickSort(T[] arr, int startIndex, int endIndex) {
 		if (startIndex >= endIndex) {
 			return;
 		}
 		int pivot = partition(arr, startIndex, endIndex);
-		QuickSort(arr, startIndex, pivot - 1);
-		QuickSort(arr, pivot + 1, endIndex);
+		quickSort(arr, startIndex, pivot - 1);
+		quickSort(arr, pivot + 1, endIndex);
 	}
 
 	public static <T extends Comparable<T>> int partition(T[] arr, int startIndex, int endIndex) {
