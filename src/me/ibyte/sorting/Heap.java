@@ -11,6 +11,9 @@ public class Heap {
 	}
 
 	
+	// 把第一个元素和最后一个元素交换
+	// 最后一个元素等于拿掉的了也就是最大的
+	// 如果底部元素到第一个位置去了就要调整堆结构递归操作完成
 	public static  void Sort(int[] numbers,int len) {
 		build(numbers, len);
 		for (int i = len - 1; i >= 0; i--) {
