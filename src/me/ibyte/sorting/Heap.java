@@ -5,11 +5,20 @@ import java.util.Arrays;
 public class Heap {
 
 	public static void main(String[] args) {
-		int[] arr = { 4,10,3,5,1,2 };
-		heapify(arr, arr.length, 0);
+		int[] arr = { 2, 5, 3, 1, 10, 4 };
+		Sort(arr, arr.length);
 		System.out.println(Arrays.toString(arr));
 	}
 
+	
+	public static  void Sort(int[] numbers,int len) {
+		build(numbers, len);
+		for (int i = len - 1; i >= 0; i--) {
+			swap(numbers, i, 0);
+			heapify(numbers, i, 0);
+		}
+	}
+	
 	// 调整堆的函数
 	private static void heapify(int[] tree, int len, int index) {
 
@@ -29,12 +38,25 @@ public class Heap {
 		}
 
 		if (max != index) {
-			int temp = tree[index];
-			tree[index] = tree[max];
-			tree[max] = temp;
+			swap(tree,max,index);
 			heapify(tree, len, max);
 		}
 
+	}
+
+	public static void build(int[] tree, int len) {
+		int parentIndex = (len - 1) / 2;
+		while (parentIndex >= 0) {
+			heapify(tree, len, parentIndex);
+			parentIndex -= 1;
+		}
+	}
+	
+	
+	private static void swap(int[] tree,int i,int j) {
+		int temp = tree[i];
+		tree[i] = tree[j];
+		tree[j] = temp;
 	}
 
 }
