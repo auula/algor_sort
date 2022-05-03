@@ -6,10 +6,11 @@ public class Counting {
 
 	public static void main(String[] args) {
 		Integer[] arr = { 22, 11, 34, 111, 1, 453, 5 };
-		countingSort(arr);
+		arr = countingSort(arr);
 		System.out.println(Arrays.toString(arr));
 	}
 
+	// https://segmentfault.com/q/1010000003902641
 	public static Integer[] countingSort(Integer[] arr) {
 		int max = arr[0], min = arr[0];
 
@@ -23,9 +24,11 @@ public class Counting {
 		}
 
 		int offset = max - min + 1;
+
 		int[] counts = new int[offset];
+
 		for (int i = 0; i < arr.length; i++) {
-			counts[arr[i] - min] += 1;
+			counts[arr[i] - min]++;
 		}
 
 		for (int i = 1; i < counts.length; i++) {
@@ -35,10 +38,10 @@ public class Counting {
 
 		Integer[] sortd = new Integer[arr.length];
 		for (int i = arr.length - 1; i >= 0; i--) {
-			sortd[counts[arr[i] - min]-1] = arr[i];
-			counts[arr[i] - min] -= 1;
+			sortd[counts[arr[i] - min] - 1] = arr[i];
+			counts[arr[i] - min]--;
 		}
-
+		
 		return sortd;
 	}
 }
